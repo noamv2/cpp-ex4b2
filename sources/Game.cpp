@@ -1,6 +1,8 @@
 #include <algorithm>
 #include "Game.hpp"
 using namespace coup;
+const int MAX_PLAYERS = 6;
+const int MIN_PLAYERS = 2;
 
 Game::Game():players_count{0},game_started{false}{
 
@@ -25,7 +27,7 @@ std::vector<std::string> Game::players(){
             cpy.pop();
 
     }
-    for(auto s: plyrs){
+    for(auto const &s: plyrs){
         if (std::find(names.begin(), names.end(), s) != names.end())
             {
             final_names.push_back(s);
@@ -50,7 +52,7 @@ void Game::add_Player(Player &p){
     if(game_started){
         throw std::invalid_argument("Game already started");
     }
-    if(players_count > 5){
+    if(players_count == MAX_PLAYERS){
         throw "too many players";
     }
     players_q.push(&p);

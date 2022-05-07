@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-
+const int COUP_COST = 7;
 namespace coup{
     class Game;    //forward declrion of Game
     class Player
@@ -24,12 +24,12 @@ namespace coup{
         //common game actions
         void income();
         void foreign_aid();
-        virtual void coup(Player &p);
+        virtual void coup(Player &p) ;
         
         //getters
         std::string role();
         std::string get_name(){return name;}
-        int coins();
+        int coins() const;
 
         //methods
         int change_balance(int sum);

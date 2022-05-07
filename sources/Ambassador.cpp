@@ -2,7 +2,7 @@
 
 using namespace coup;
 
-Ambassador::Ambassador(Game & g,std::string name):Player(&g, name, "Ambassador") {
+Ambassador::Ambassador(Game & g,std::string name):Player(&g, std::move(name), "Ambassador") {
     g.add_Player(*this);
 }
 

@@ -2,7 +2,7 @@
 
 using namespace coup;
 
-Contessa::Contessa(Game &g, std::string s): Player(&g, s, "Contessa") {
+Contessa::Contessa(Game &g, std::string name): Player(&g, std::move(name), "Contessa") {
     g.add_Player(*this);
 }
 

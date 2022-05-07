@@ -1,15 +1,16 @@
 #include "Game.hpp"
+
 using namespace coup;
 
-Player::Player(std::string name, std::string role):balance{0}, name{name}, role_name{role},took_fa{false}, is_eliminated{false}{
+Player::Player(std::string name, std::string role):game{nullptr}, action_object{nullptr},balance{0}, name{std::move(name)}, role_name{std::move(role)},took_fa{false}, is_eliminated{false}{
 
 }
 
-Player::Player(Game * g, std::string name, std::string role):game{g},balance{0}, name{name}, role_name{role},took_fa{false},is_eliminated{false}{
+Player::Player(Game * g, std::string name, std::string role):action_object{nullptr}, game{g},balance{0}, name{std::move(name)}, role_name{std::move(role)},took_fa{false},is_eliminated{false}{
 }
 
 void Player::income(){
-    if(coins() > 9){
+    if(coins() > COUP_COST + 2){
         throw std::invalid_argument("Must coup with the current amount of coins");
     }
     game->play(*this);
@@ -18,7 +19,7 @@ void Player::income(){
 }
 
 void Player::foreign_aid(){
-    if(coins() > 9){
+    if(coins() > COUP_COST + 2){
         throw std::invalid_argument("Must coup with the current amount of coins");
     }
     game->play(*this);
@@ -30,20 +31,20 @@ void Player::foreign_aid(){
  void Player::coup(Player & p){
     
     reset_actions();
-    if(balance < 7){
+    if(balance < COUP_COST){
         throw std::invalid_argument("Insufficient funds to coup");
     }
     
     game->remove_player(p);
     game->play(*this);
-    change_balance(-7);
+    change_balance(-COUP_COST);
 }
 
 std::string Player::role(){
 
     return role_name;
 }
-int Player::coins(){
+int Player::coins() const{
     return balance; 
 }
 

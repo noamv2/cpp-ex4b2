@@ -2,7 +2,7 @@
 
 using namespace coup;
 
-Assassin::Assassin(Game &g, std::string s):Player(&g, s, "Assassin"){
+Assassin::Assassin(Game &g, std::string name):Player(&g, std::move(name), "Assassin"){
     g.add_Player(*this);
 }
 
@@ -32,10 +32,10 @@ void Assassin::foreign_aid(){
 
 void Assassin::coup(Player &p){
     
-    if(coins() >= 7){
+    if(coins() >= COUP_COST){
         game->play(*this);
         game->remove_player(p);
-        change_balance(-7);
+        change_balance(-COUP_COST);
         return;
     }
     

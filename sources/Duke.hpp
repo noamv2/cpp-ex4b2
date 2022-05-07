@@ -11,7 +11,7 @@ namespace coup{
         
         //unique traits
         void tax();
-        void block(Player &p);
+        static void block(Player &p);
 
     };
 

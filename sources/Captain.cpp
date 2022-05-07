@@ -2,7 +2,7 @@
 
 using namespace coup;
 
-Captain::Captain(Game & g, std::string s): Player(&g, s, "Captain") {   
+Captain::Captain(Game & g, std::string name): Player(&g, std::move(name), "Captain") {   
     g.add_Player(*this);
 }
 
