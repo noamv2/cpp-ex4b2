@@ -6,7 +6,7 @@ CXX=clang++-9
 CXXVERSION=c++2a
 SOURCE_PATH=sources
 OBJECT_PATH=objects
-CXXFLAGS=-std=$(CXXVERSION) -Werror -Wsign-conversion -I$(SOURCE_PATH)
+CXXFLAGS=-std=$(CXXVERSION) -g -Werror -Wsign-conversion -I$(SOURCE_PATH)
 TIDY_FLAGS=-extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory --warnings-as-errors=*
 VALGRIND_FLAGS=-v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 
@@ -33,7 +33,7 @@ StudentTest1.cpp:
 StudentTest2.cpp: 
 	curl https://raw.githubusercontent.com/Esther-Bi/B-HW4-Test/main/Test.cpp > $@
 
-# Benjamin Saldman
+# # Benjamin Saldman
 StudentTest3.cpp: 
 	curl https://raw.githubusercontent.com/BenjaminSaldman/coup-a/main/Test.cpp > $@
 
