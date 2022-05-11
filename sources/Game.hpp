@@ -8,22 +8,24 @@ namespace coup{
         
         private:
 
-        std::queue<Player *> players_q; 
-        std::vector<std::string> plyrs;
-        int players_count;
-        bool game_started;
-        public:
-        Game();
+            std::queue<Player *> players_q; 
+            std::vector<std::string> plyrs;
+            int players_count;
+            bool game_started;
+            bool tooMany;
 
-        std::string turn();
-        std::vector<std::string> players();
-        std::string winner();
-        void change_count(int n);
-        
-        void add_Player(Player &p);
-        void remove_player(Player &p);
-        void play(Player &p);
-        int get_count(){return players_count;}
+        public:
+            Game();
+
+            std::string turn();
+            std::vector<std::string> players();
+            std::string winner();
+            void change_count(int n);
+            bool isTooMany(){return tooMany;}
+            void add_Player(Player &p);
+            void remove_player(Player &p);
+            void play(Player &p);
+            int get_count(){return players_count;}
 
     };
 

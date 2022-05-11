@@ -4,7 +4,7 @@ using namespace coup;
 const int MAX_PLAYERS = 6;
 const int MIN_PLAYERS = 2;
 
-Game::Game():players_count{0},game_started{false}{
+Game::Game():players_count{0},tooMany{false},game_started{false}{
 
 }
 
@@ -52,8 +52,9 @@ void Game::add_Player(Player &p){
     if(game_started){
         throw std::invalid_argument("Game already started");
     }
-    if(players_count == MAX_PLAYERS){
-        throw "too many players";
+    if(players_count == MAX_PLAYERS ){
+        throw std::invalid_argument("Game already started");
+        
     }
     players_q.push(&p);
     plyrs.push_back(p.get_name());
@@ -100,7 +101,8 @@ void Game::play(Player &p){
     if( players_count < 2 && !game_started){
            throw std::invalid_argument("Not enough players");   
     }
-    game_started = true;
+    
+    game_started = true;    
 
     if(p.is_eliminated){
         throw std::invalid_argument("Player is elimanted");

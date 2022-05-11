@@ -4,7 +4,7 @@
 #include <stdexcept>
 const int COUP_COST = 7;
 namespace coup{
-    class Game;    //forward declrion of Game
+    class Game;    //forward declraion of Game
     class Player
     {
     private:
@@ -20,6 +20,7 @@ namespace coup{
         Player * action_object; // pointer to the player that was the object of the action, help revert it
         Player(std::string name, std::string role);
         Player(Game * g, std::string name, std::string role);
+        Player(){}
         
         //common game actions
         void income();
